@@ -1,0 +1,19 @@
+.commitee{
+    border:2px solid green;
+    border-radius: 10px;
+    margin:20px;
+    padding:10px;
+    width: max-content;
+    height: auto;
+    float: left;
+}
+
+
+input.ng-touched.ng-invalid{
+    border: 3px solid red;
+}
+label{
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Times New Roman';
+}

@@ -1,0 +1,79 @@
+<div *ngIf='roleMessage == null' class='staff' [ngStyle]="setMyStyle()">
+
+    <h3 style="text-align:center;color: mediumblue;"> Create New University Staff</h3>
+    <hr>
+    <form #staffForm='ngForm' (submit)='createNew(staffForm.value)'>
+        <div class='form-group'>
+            <label for='staffid'>Staff Id</label>
+            <input type='text' id='staffid' class='form-control' ngModel name='staffId' #tstaffId='ngModel' required>
+        </div>
+        <div *ngIf='tstaffId.touched && tstaffId.invalid' class='alert alert-danger'>
+            Please enter staff id. This field is must.
+        </div>
+
+        <div class='form-group'>
+            <label for='staffname'>Name</label>
+            <input type='text' id='staffname' class='form-control' ngModel name='username' #tstaffname='ngModel' required minlength="4">
+        </div>
+        <div *ngIf='tstaffname.touched && tstaffname.invalid'>
+            <div *ngIf='tstaffname.errors.required' class='alert alert-danger'>
+                Please enter name
+            </div>
+            <div *ngIf='tstaffname.errors.minlength' class='alert alert-danger'>
+                Name must contains atleast 4 characters
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id='password' class='form-control' ngModel name='password' #tpassword='ngModel' required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 6 or more characters"
+            />
+        </div>
+        <div *ngIf='tpassword.touched && tpassword.invalid'>
+            <div *ngIf="tpassword.errors.required" class='alert alert-danger'>
+                Password is required
+            </div>
+            <div *ngIf="tpassword.errors.pattern" class='alert alert-danger'>
+                Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters
+            </div>
+        </div>
+
+        <div class='form-group'>
+            <label for='role'>Role</label>
+            <select id='role' class="form-control" ngModel name='role' #tstaffrole='ngModel' aria-label="Default selected Role" required>
+                <option disabled>Choose Your Role</option>
+                <option *ngFor='let role of roles' [value]="role.name">
+                    {{role.name}}
+                </option>
+            </select>
+        </div>
+        <div *ngIf='tstaffrole.touched && tstaffrole.invalid'>
+            <div *ngIf='tstaffrole.errors.required' class='alert alert-danger'>
+                Please enter staff role
+            </div>
+        </div>
+
+
+        <button type='submit' class='btn btn-primary btn-block' [disabled]="staffForm.invalid">Submit</button>
+        <button (click)='goBack()' class='btn btn-primary btn-block'>Back</button>
+    </form>
+
+    <p class='alert alert-success text-center' *ngIf='successMessage != null' (click)='successMessage=null'>
+        {{successMessage}}
+    </p>
+
+    <div *ngIf='errorMessage != null' class='alert alert-danger text-center' (click)='errorMessage=null'>
+        {{errorMessage}}
+    </div>
+
+    <div *ngIf='validationMessages != null' (click)='validationMessages=null'>
+        <p *ngFor='let msg of validationMessages' class='alert alert-danger text-center'>
+            {{msg}}
+        </p>
+    </div>
+</div>
+
+<div *ngIf='roleMessage != null' class='alert alert-danger text-center'>
+    {{roleMessage}}
+</div>

@@ -1,0 +1,75 @@
+<!-- <div class='commitee'>
+    <div *ngIf='admission!= null'>
+        <table class='table'>
+            <tr>
+                <td>Admission Id</td>
+                <td><input type='number' [(ngModel)]='admission.admissionId'></td>
+            </tr>
+            <tr>
+                <td>Admission Status</td>
+                <td><select name="status" [(ngModel)]='admission.status'>
+                        <option value="" disabled>Choose a status</option>
+                        <option value="APPLIED">APPLIED</option>
+                        <option value="PENDING">PENDING</option>
+                        <option value="CONFIRMED">CONFIRMED</option>
+                        <option value="REJECTED">REJECTED</option>
+                    </select></td> 
+                <td><input type='text' [(ngModel)]='admission.status'></td>
+            </tr>
+        </table>
+        <button (click)='updated()' class='btn btn-success btn-block'>Update</button>
+        <button (click)='goBack()' class='btn btn-primary btn-block'>Back</button>
+
+        <p class='alert alert-success' *ngIf='successMessage != null' (click)='successMessage=null'>
+            {{successMessage}}
+        </p>
+    </div>
+
+
+    <div *ngIf='errorMessage != null' class='alert alert-danger' (click)='errorMessage=null'>
+        {{errorMessage}}
+    </div>
+
+    <div *ngIf='validationMessages != null' (click)='validationMessages=null'>
+        <p *ngFor='let msg of validationMessages' class='alert alert-danger'>
+            {{msg}}
+        </p>
+    </div>
+</div> -->
+
+<div class='commitee'>
+    <div *ngIf='admission!=null'>
+        <table class='table'>
+            <tr>
+                <th>Admission Id</th>
+                <td><input type='text' [(ngModel)]='admission.admissionId' readonly></td>
+            </tr>
+
+            <tr>
+                <th>Status </th>
+                <!-- <td><input type='text' [(ngModel)]='admission.status'></td> -->
+                <select id='status' [(ngModel)]='admission.status' name='status' required>
+                    <option disabled>Choose Status</option>
+                    <option *ngFor='let status of statuses' [value]="status.name">
+                        {{status.name}}
+                    </option>
+                </select>
+            </tr>
+        </table>
+        <button (click)='updated()' class='btn btn-success btn-block'>Update</button>
+        <button (click)='goBack()' class='btn btn-primary btn-block'>Back</button>
+
+        <p class='alert alert-success text-center' *ngIf='successMessage != null' (click)='successMessage=null'>
+            {{successMessage}}
+        </p>
+    </div>
+
+    <div *ngIf='errorMessage != null' class='alert alert-danger text-center' (click)='errorMessage=null'>
+        {{errorMessage}}
+    </div>
+    <div *ngIf='validationMessages != null' (click)='validationMessages=null'>
+        <p *ngFor='let msg of validationMessages' class='alert alert-danger text-center'>
+            {{msg}}
+        </p>
+    </div>
+</div>

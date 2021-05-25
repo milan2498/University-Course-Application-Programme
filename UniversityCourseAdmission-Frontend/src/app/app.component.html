@@ -1,0 +1,74 @@
+<div class="container" id="myDIV">
+    <h1 style="color: indigo;text-align: center;">{{title}}</h1>
+    <p *ngIf='username != null' style="color: navy;">Welcome {{username}}</p>
+    <hr>
+    <nav class="navbar navbar-expand-lg navbar-dark primary-color">
+        <div class="btn-group">
+            <button type="button" routerLink="home" class="btn btn-primary">Home</button>
+            <button type="button" routerLink="aboutus" class="btn btn-primary">About Us</button>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">User
+                </button>
+                <div class="dropdown-menu" style="background-color: wheat;">
+                    <a routerLink="profile" class="dropdown-item">Profile</a>
+                    <a routerLink="login" class="dropdown-item">Login</a>
+                    <a routerLink="changePassword" class="dropdown-item">Change Password</a>
+                    <a routerLink="logout" class="dropdown-item">Logout</a>
+                </div>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Applicant
+                </button>
+                <div class="dropdown-menu" style="background-color: wheat;">
+                    <a routerLink="applicant-create" class="dropdown-item">Create Applicant</a>
+                    <a routerLink="applicant-list" class="dropdown-item">Applicant List</a>
+                    <!--<a routerLink="applicant-update" class="dropdown-item">Update Applicant</a>-->
+                </div>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Admission
+                </button>
+                <div class="dropdown-menu" style="background-color: wheat;">
+                    <a routerLink="admission-create" class="dropdown-item">Create Admission</a>
+                    <a routerLink="admission-list" class="dropdown-item">Admission List</a>
+                    <!--a routerLink="admission-update" class="dropdown-item">Update Admission</a-->
+                </div>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Course
+                </button>
+                <div class="dropdown-menu" style="background-color: wheat;">
+                    <a routerLink="course-create" class="dropdown-item">Create Courses</a>
+                    <a routerLink="course-list" class="dropdown-item">Courses List</a>
+                    <!-- <a routerLink="course-update" class="dropdown-item">Update Courses</a>-->
+                </div>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">University Staff
+                </button>
+                <div class="dropdown-menu" style="background-color: wheat;">
+                    <a routerLink="staff-create" class="dropdown-item">Create University Staff</a>
+                    <a routerLink="staff-list" class="dropdown-item">University Staff List</a>
+                    <!--<a routerLink="staff-update" class="dropdown-item">Update University Staff</a>-->
+                </div>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Admission Commitee
+                    Member
+                </button>
+                <div class="dropdown-menu" style="background-color: wheat;">
+                    <a routerLink="admission-commitee-member-create" class="dropdown-item">Create Admission Commitee
+                        Member</a>
+                    <a routerLink="admission-commitee-member-list" class="dropdown-item">Admission Commitee Member
+                        List</a>
+                    <!-- <a routerLink="admission-commitee-member-status" class="dropdown-item">Update Admission
+                        Status</a> -->
+
+                </div>
+            </div>
+        </div>
+
+    </nav>
+    
+    <router-outlet></router-outlet>
+</div>

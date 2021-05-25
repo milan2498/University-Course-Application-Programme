@@ -1,0 +1,36 @@
+<html>
+
+<body>
+    <div class="about-section" style="max-width: 100%; height: auto;">
+      <h1 style="text-align:center;color: wheat; padding-top: 30px; padding-bottom: 30px; font-weight: bolder; border: 2px dotted wheat; margin: 5px; letter-spacing: 3px; text-transform: uppercase;"><i>Our Team</i></h1>
+    </div>
+
+   
+    <div class="row">
+        <div class="column" *ngFor='let ele of aboutUs.slice(0,3)'>
+            <div class="card">
+
+                <div class="container">
+                    <h2>{{ele.name}}</h2>
+                    <p class="title" style="color: yellow; font-weight: bold; padding-left: 10px; font-family: 'Courier New', Courier, monospace; background-color: seagreen; background-size: auto">{{ele.role}}</p>
+                    <p>{{ele.description}}</p>
+                    <p>{{ele.mailId}}</p>
+                    <p><button class="button">Contact</button></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column" *ngFor='let ele of aboutUs.slice(3,7)'>
+            <div class="card">
+
+                <div class="container">
+                    <h2>{{ele.name}}</h2>
+                    <p class="title" style="color: yellow; font-weight: bold; padding-left: 10px; font-family: 'Courier New', Courier, monospace; background-color: seagreen; background-size: auto">{{ele.role}}</p>
+                    <p>{{ele.description}}</p>
+                    <p>{{ele.mailId}}</p>
+                    <p><button class="button">Contact</button></p>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,18 @@
+.btn {
+    border: none;
+    outline: none;
+    padding: 5px 10px;
+    background-color: darkslateblue;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  
+  /* Style the active class, and buttons on mouse-over */
+  .btn:hover {
+    background-color: cornflowerblue;
+    color: midnightblue;
+    padding: 6px 15px;
+    border:2px solid navy ;
+  }
+  
+  

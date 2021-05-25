@@ -1,0 +1,13 @@
+.maindiv{
+    border:2px solid green;
+    border-radius: 10px;
+    margin:20px;
+    padding:10px;
+    width: max-content;
+    height: auto;
+    float: left;
+}
+th{
+    text-align: center;
+    font-family: 'Times New Roman';
+}

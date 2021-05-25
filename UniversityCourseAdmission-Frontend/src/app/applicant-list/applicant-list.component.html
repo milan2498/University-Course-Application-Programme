@@ -1,0 +1,50 @@
+<div class='maindiv' *ngIf='errorMessage == null'>
+    <h3 style='text-align:center;color: mediumblue;'>{{header}}</h3>
+    <nav class="navbar navbar-dark bg-primary">
+       
+        <input class="form-control mr-sm-2 topnav-right fa fa-search" type="text" name="applicantDegree" [(ngModel)]="applicantDegree" (ngModelChange)="Search()" placeholder="Enter Applicant Degree to Search">
+    
+    </nav>
+    <table class='table table-striped table-bordered' [ngStyle]="setMyStyle()">
+        <tr>
+            <th (click)="sort('id')"> Applicant Id &nbsp; <i class="fa fa-sort"></i></th>
+            <th>Username</th>
+            <th>Role</th>
+            <th>Applicant First Name</th>
+            <th>Applicant Last Name</th>
+            <th>Mobile Number</th>
+            <th>Applicant Degree</th>
+            <th>Applicant Graduation Percent</th>
+            <th>Course Id</th>
+            <th>Address</th>
+            <th>Email Id</th>
+            <th>Gender</th>
+            <th *ngIf='isLoggedin && role == "COMMITEE"'>Action</th>
+        </tr>
+        <tr *ngFor='let app of applicants | orderBy : key : reverse | paginate:{itemsPerPage:3,currentPage:p};' style='padding:2px'>
+            <td>{{app.applicantId}}</td>
+            <td>{{app.username}}</td>
+            <td>{{app.role}}</td>
+            <td>{{app.applicantFirstName}}</td>
+            <td>{{app.applicantLastName}}</td>
+            <td>{{app.mobileNumber}}</td>
+            <td>{{app.applicantDegree}}</td>
+            <td>{{app.applicantGraduationPercent}}</td>
+            <td>{{app.courseId}}</td>
+            <td>{{app.address}}</td>
+            <td>{{app.emailId}}</td>
+            <td>{{app.gender}}</td>
+            <td *ngIf='isLoggedin && role == "COMMITEE" || role == "ADMIN"'> 
+                <button class='btn btn-danger' (click)='delete(app.applicantId)'>Delete</button>
+                <a [routerLink]="['/applicant-update',app.applicantId]" class='btn btn-primary'>Modify</a>
+            </td>
+        </tr>
+        <tr><pagination-controls (pageChange) = "p=$event"></pagination-controls></tr>
+    </table>
+    <div *ngIf='message != null' (click)='message=null' class='alert alert-success text-center'>
+        {{message}}
+    </div>
+</div>
+<div class='alert alert-danger' *ngIf='errorMessage != null'>
+    <h2>{{errorMessage}}</h2>
+</div>

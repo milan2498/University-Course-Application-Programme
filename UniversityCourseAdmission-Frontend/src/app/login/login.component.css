@@ -1,0 +1,8 @@
+input.ng-touched.ng-invalid{
+    border:3px solid red;
+}
+label{
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Times New Roman';
+}

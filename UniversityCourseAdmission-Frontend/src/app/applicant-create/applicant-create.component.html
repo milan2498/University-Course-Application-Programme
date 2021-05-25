@@ -1,0 +1,107 @@
+<div class='applicant' [ngStyle]="setMyStyle()">
+
+    <h3 style="text-align:center;color: mediumblue;"> Create New Applicant</h3>
+    <hr>
+    <form #applicantForm='ngForm' (submit)='createNew(applicantForm.value)'>
+        <div class='form-group'>
+            <label for='applicantId'>Applicant Id</label>
+            <input id='applicantId' class='form-control' type='text' ngModel name='applicantId' #tapplicantId='ngModel' required>
+        </div>
+        <div *ngIf='tapplicantId.touched && tapplicantId.invalid' class='alert alert-danger'>
+            Please enter Applicant id. This field is must.
+        </div>
+        <div class='form-group'>
+            <label for='username'>Username</label>
+            <input id='username' class='form-control' type='text' ngModel name='username' #tusername='ngModel' required>
+        </div>
+        <div *ngIf='tusername.touched && tusername.invalid'>
+            <div *ngIf='tusername.errors.required' class='alert alert-danger'>
+                Please enter username
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id='password' class='form-control' ngModel name='password' #tpassword='ngModel' required/>
+        </div>
+        <div *ngIf='tpassword.touched && tpassword.invalid'>
+            <div *ngIf='tpassword.errors.required' class='alert alert-danger'>
+                Please enter password
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="role">Role</label>
+            <select id='role' class="form-control" ngModel name='role' #trole='ngModel' aria-label="Default selected Role" required>
+                <option disabled>Choose Your Role</option>
+                <option *ngFor='let role of roles' [value]="role.name">
+                    {{role.name}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="applicantFirstName">First Name</label>
+            <input type="text" id='applicantFirstName' class='form-control' ngModel name='applicantFirstName' #tapplicantFirstName='ngModel' />
+        </div>
+        <div class="form-group">
+            <label for="applicantLastName">Last Name</label>
+            <input type="text" id='applicantLastName' class='form-control' ngModel name='applicantLastName' #tapplicantLastName='ngModel' />
+        </div>
+        <div class="form-group">
+            <label for="mobileNumber">Mobile Number</label>
+            <input type="tel" id='mobileNumber' class='form-control' ngModel name='mobileNumber' #tmobileNumber='ngModel' pattern="[0-9]{10}" required />
+        </div>
+        <div *ngIf='tmobileNumber.touched && tmobileNumber.invalid'>
+            <div *ngIf='tmobileNumber.errors.required || tmobileNumber.errors.pattern' class='alert alert-danger'>
+                Please enter 10-digit mobile number.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="applicantDegree">Degree</label>
+            <input type="text" id='applicantDegree' class='form-control' ngModel name='applicantDegree' #tapplicantDegree='ngModel' />
+        </div>
+        <div class="form-group">
+            <label for="applicantGraduationPercent">Graduation Percent</label>
+            <input type="number" id='applicantGraduationPercent' class='form-control' ngModel name='applicantGraduationPercent' #tapplicantGraduationPercent='ngModel' />
+        </div>
+        <div class="form-group">
+            <label for="courseId">Course Id</label>
+            <select id='courseId' class="form-control" ngModel name='courseId' #tcourseId='ngModel' aria-label="Default selected Course Id" required>
+                <option disabled>Choose Your Course</option>
+                <option *ngFor='let course of courses' [value]="course.number">
+                    {{course.number}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" id='address' class='form-control' ngModel name='address' #taddress='ngModel' />
+        </div>
+        <div class="form-group">
+            <label for="emailId">Email Id</label>
+            <input type="emailId" id='emailId' class='form-control' ngModel name='emailId' #temailId='ngModel' />
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <select id='gender' class="form-control" ngModel name='gender' #tgender='ngModel' aria-label="Default selected Gender" required>
+                <option disabled>Choose Your Gender</option>
+                <option *ngFor='let gender of genders' [value]="gender.name">
+                    {{gender.name}}
+                </option>
+            </select>
+        </div>
+        <button type='submit' class='btn btn-primary btn-block' [disabled]="applicantForm.invalid">Submit</button>
+        <button type='reset' class='btn btn-primary btn-block'>Reset Form</button>
+    </form>
+    <p class='alert alert-success text-center' *ngIf='successMessage != null' (click)='successMessage=null'>
+        {{successMessage}}
+    </p>
+
+    <div *ngIf='errorMessage != null' class='alert alert-danger' (click)='errorMessage=null'>
+        {{errorMessage}}
+    </div>
+
+    <div *ngIf='validationMessages != null' (click)='validationMessages=null'>
+        <p *ngFor='let msg of validationMessages' class='alert alert-danger'>
+            {{msg}}
+        </p>
+    </div>
+</div>

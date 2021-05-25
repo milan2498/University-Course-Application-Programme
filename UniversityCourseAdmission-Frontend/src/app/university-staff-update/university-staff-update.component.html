@@ -1,0 +1,54 @@
+<div class='universitystaff'>
+    <div *ngIf='staff != null'>
+        <table class='table table-striped table-bordered'>
+            <tr>
+                <th>STAFF ID</th>
+                <td><input type='text' [(ngModel)]='staff.staffId' readonly></td>
+            </tr>
+            <tr *ngIf="staff.admissionCommiteeMemberId!=null">
+                <th>ADMISSION MEMBER ID</th>
+                <td><input type='text' [(ngModel)]='staff.admissionCommiteeMemberId' readonly></td>
+            </tr>
+            <tr>
+                <th>STAFF NAME</th>
+                <td><input type='text' [(ngModel)]='staff.username'></td>
+            </tr>
+            <tr>
+                <th>STAFF PASSWORD</th>
+                <td><input type='text' [(ngModel)]='staff.password'></td>
+            </tr>
+            <tr>
+                <th>STAFF ROLE</th>
+                
+                <td>
+                    <div>
+                    <select [(ngModel)]='staff.role' (change)="updatedRole($event)" class="browser-default custom-select custom-select-md">
+                       <option selected disabled>{{staff.role}}</option>
+                        <option *ngFor='let role of roles' [ngValue]='role.name'>{{role.name}}</option>
+                     </select>
+                    </div>
+                </td>
+            </tr>
+
+            
+            
+        </table>
+        <button (click)='updated()' class='btn btn-success btn-block'>Update</button>
+        <button (click)='goBack()' class='btn btn-primary btn-block'>Back</button>
+
+        <p class='alert alert-success text-center' *ngIf='successMessage != null' (click)='successMessage=null'>
+            {{successMessage}}
+        </p>
+    </div>
+
+
+    <div *ngIf='errorMessage != null' class='alert alert-danger text-center' (click)='errorMessage=null'>
+        {{errorMessage}}
+    </div>
+
+    <div *ngIf='validationMessages != null' (click)='validationMessages=null'>
+        <p *ngFor='let msg of validationMessages' class='alert alert-danger text-center'>
+            {{msg}}
+        </p>
+    </div>
+</div>

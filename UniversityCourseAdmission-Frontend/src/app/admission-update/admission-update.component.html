@@ -1,0 +1,34 @@
+<div class='Admission'>
+    <div *ngIf='admission!=null'>
+        <table class='table'>
+            <tr>
+                <th>Admission Id</th>
+                <td><input type='text' [(ngModel)]='admission.admissionId' readonly></td>
+            </tr>
+            <tr>
+                <th>Course Id </th>
+                <td><input type='text' [(ngModel)]='admission.courseId' readonly></td>
+            </tr>
+            <tr>
+                <th>Admission Date </th>
+                <td><input type='date' [(ngModel)]='admission.admissionDate'></td>
+            </tr>
+            
+        </table>
+        <button (click)='updated()' class='btn btn-success btn-block'>Update</button>
+        <button (click)='goBack()' class='btn btn-primary btn-block'>Back</button>
+
+        <p class='alert alert-success text-center' *ngIf='successMessage != null' (click)='successMessage=null'>
+            {{successMessage}}
+        </p>
+    </div>
+    
+    <div *ngIf='errorMessage != null' class='alert alert-danger text center' (click)='errorMessage=null'>
+        {{errorMessage}}
+    </div>
+    <div *ngIf='validationMessages != null' (click)='validationMessages=null'>
+        <p *ngFor='let msg of validationMessages' class='alert alert-danger text center'>
+            {{msg}}
+        </p>
+    </div>
+</div>

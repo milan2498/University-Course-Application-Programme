@@ -1,0 +1,47 @@
+<div class='course'>
+    <div *ngIf='course != null'>
+        <table class='table'>
+            <tr>
+                <th>Course Id</th>
+                <td><input type='number' [(ngModel)]='course.courseId' readonly></td>
+            </tr>
+            <tr>
+                <th>Course Name</th>
+                <td><input type='text' [(ngModel)]='course.courseName'></td>
+            </tr>
+            <tr>
+                <th>Course Duration</th>
+                <td><input type='text' [(ngModel)]='course.courseDuration'></td>
+            </tr>
+            <tr>
+                <th>Course Start Date</th>
+                <td><input type='date' [(ngModel)]='course.courseStartDate'></td>
+            </tr>
+            <tr>
+                <th>Course End Date</th>
+                <td><input type='date' [(ngModel)]='course.courseEndDate'></td>
+            </tr>
+            <tr>
+                <th>Course Fees</th>
+                <td><input type='text' [(ngModel)]='course.courseFees'></td>
+            </tr>
+        </table>
+        <button (click)='updated()' class='btn btn-success btn-block'>Update</button>
+        <button (click)='goBack()' class='btn btn-primary btn-block'>Back</button>
+
+        <p class='alert alert-success text-center' *ngIf='successMessage != null' (click)='successMessage=null'>
+            {{successMessage}}
+        </p>
+    </div>
+
+
+    <div *ngIf='errorMessage != null' class='alert alert-danger text-center' (click)='errorMessage=null'>
+        {{errorMessage}}
+    </div>
+
+    <div *ngIf='validationMessages != null' (click)='validationMessages=null'>
+        <p *ngFor='let msg of validationMessages' class='alert alert-danger text-center'>
+            {{msg}}
+        </p>
+    </div>
+</div>

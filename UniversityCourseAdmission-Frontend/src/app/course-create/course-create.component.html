@@ -1,0 +1,102 @@
+<div *ngIf='roleMessage == null' class='course' [ngStyle]="setMyStyle()">
+
+    <h3 style="text-align:center;color: mediumblue;"> Create New Course</h3>
+    <hr>
+    <form #courseForm='ngForm' (submit)='createNew(courseForm.value)'>
+        <div class='form-group'>
+            <label for='courseId'>Course Id</label>
+            <input id='courseId' class='form-control' type='text' ngModel name='courseId' #tcourseId='ngModel' required pattern="^[0-9]{1,4}$">
+        </div>
+        <div *ngIf='tcourseId.touched && tcourseId.invalid' class='alert alert-danger'>
+            <div *ngIf="tcourseId.errors.required" class='alert alert-danger'>
+                Please enter course id. This field is must.
+            </div>
+            <div *ngIf="tcourseId.errors.pattern" class='alert alert-danger'>
+                Must contain a number
+            </div>
+        </div>
+
+        <div class='form-group'>
+            <label for='courseName'>Course Name</label>
+            <input id='courseName' class='form-control' type='text' ngModel name='courseName' #tcourseName='ngModel' required minlength="3">
+        </div>
+        <div *ngIf='tcourseName.touched && tcourseName.invalid'>
+            <div *ngIf='tcourseName.errors.required' class='alert alert-danger'>
+                Please enter name
+            </div>
+            <div *ngIf='tcourseName.errors.minlength' class='alert alert-danger'>
+                Name must contains atleast 3 characters
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="courseDuration">Course Duration</label>
+            <input type="courseDuration" id='courseDuration' class='form-control' ngModel name='courseDuration' #tcourseDuration='ngModel' required>
+        </div>
+        <div *ngIf='tcourseDuration.touched && tcourseDuration.invalid' class='alert alert-danger'>
+            Please enter course Duration period.
+        </div>
+
+        <div class="form-group">
+            <label for="courseStartDate">course Start Date</label>
+            <input type="date" id='courseStartDate' class='form-control' ngModel name='courseStartDate' #tcourseStartDate='ngModel' required>
+        </div>
+        <div *ngIf='tcourseStartDate.touched && tcourseStartDate.invalid' class='alert alert-danger'>
+            Please enter date.
+        </div>
+        <div class="form-group">
+            <label for="courseEndDate">course End Date</label>
+            <input type="date" id='courseEndDate' class='form-control' ngModel name='courseEndDate' #tcourseEndDate='ngModel' required>
+        </div>
+        <div *ngIf='tcourseEndDate.touched && tcourseEndDate.invalid' class='alert alert-danger'>
+            Please enter date.
+        </div>
+        <div class="form-group">
+            <label for="courseFees">course Fees</label>
+            <input type="text" id='courseFees' class='form-control' ngModel name='courseFees' #tcourseFees='ngModel' required>
+        </div>
+        <div *ngIf='tcourseFees.touched && tcourseFees.invalid' class='alert alert-danger'>
+            Please enter course fees.
+        </div>
+
+
+
+        <!--<div class='form-group'>
+            <label for='role'>Role</label>
+            <select id='role' class="form-control" ngModel name='staffrole' #tstaffrole='ngModel' aria-label="Default selected Role" required>
+                <option disabled>Choose Your Role</option>
+                <option *ngFor='let role of roles' [value]="role.id">
+                    {{role.name}}
+                </option>
+            </select>
+        </div>
+        <div *ngIf='tstaffrole.touched && tstaffrole.invalid'>
+            <div *ngIf='tstaffrole.errors.required' class='alert alert-danger'>
+                Please enter staff role
+            </div>
+        </div>-->
+
+
+        <button type='submit' class='btn btn-primary btn-block' [disabled]="courseForm.invalid">Submit</button>
+        <button type='reset' class='btn btn-primary btn-block'>Reset From</button>
+    </form>
+
+    <p class='alert alert-success text-center' *ngIf='successMessage != null' (click)='successMessage=null'>
+        {{successMessage}}
+    </p>
+
+    <div *ngIf='errorMessage != null' class='alert alert-danger text-center' (click)='errorMessage=null'>
+        {{errorMessage}}
+    </div>
+
+    <div *ngIf='validationMessages != null' (click)='validationMessages=null'>
+        <p *ngFor='let msg of validationMessages' class='alert alert-danger text-center'>
+            {{msg}}
+        </p>
+    </div>
+</div>
+
+<div *ngIf='roleMessage != null' class='alert alert-danger text-center'>
+    {{roleMessage}}
+</div>

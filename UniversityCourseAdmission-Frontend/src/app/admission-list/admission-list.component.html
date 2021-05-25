@@ -1,0 +1,47 @@
+<div class='maindiv'  *ngIf='errorMessage == null && roleMessage == null'>
+    <h3 style='text-align:center;color: mediumblue;'>{{header}}</h3>
+    <nav class="navbar navbar-dark bg-primary">
+       
+        <input class="form-control mr-sm-2 topnav-right fa fa-search" type="text" name="status" [(ngModel)]="status" (ngModelChange)="Search()" placeholder="Enter Status to Search">
+    
+    </nav>
+    
+    <table [ngStyle]="setMyStyle()" class='table  table-striped table-bordered'>
+        <tr>
+            <th (click)="sort('id')"> Admission Id &nbsp; <i class="fa fa-sort"></i> </th>
+            <th>Course Id</th>
+            <th>Admission Date</th>
+            <th>Status</th>
+            <th>Applicant Id</th>
+            <th *ngIf='isLoggedin && role == "COMMITEE" || role == "ADMIN" || role == "COMMITEE"'>Action</th>
+        </tr>
+        <tr *ngFor='let admission of admissions | orderBy : key : reverse | paginate:{itemsPerPage:3,currentPage:p};' style='padding:2px'>
+            <td>{{admission.admissionId}}</td>
+            <td>{{admission.courseId}}</td>
+            <td>{{admission.admissionDate}}</td>
+            <td>{{admission.status}}</td>
+            <td>{{admission.applicant.applicantId}}</td>
+            <td *ngIf='isLoggedin && role == "COMMITEE" || role == "ADMIN" || role == "COMMITEE"'>
+                <!--<button class='btn btn-danger' (click)='delete(admission.admissionId)'>Delete</button>
+                &nbsp;&nbsp;-->
+                <a [routerLink]="['/admission-delete',admission.admissionId]" class='btn btn-danger'>Delete</a>
+                <a [routerLink]="['/admission-update',admission.admissionId]" class='btn btn-primary'>Modify</a>
+                <a [routerLink]="['/admission-commitee-member-status',admission.admissionId]"
+                    class='btn btn-primary'>Status</a>
+
+            </td>
+        </tr>
+        <tr><pagination-controls (pageChange) = "p=$event"></pagination-controls></tr>
+    </table>
+
+    <div *ngIf='message != null' (click)='message=null' class='alert alert-success text-center'>
+        {{message}}
+    </div>
+</div>
+<div class='alert alert-danger text-center' *ngIf='errorMessage != null'>
+    <h2>{{errorMessage}}</h2>
+</div>
+
+<div class='alert alert-danger text-center' *ngIf='roleMessage != null'>
+    <h2>{{roleMessage}}</h2>
+</div>

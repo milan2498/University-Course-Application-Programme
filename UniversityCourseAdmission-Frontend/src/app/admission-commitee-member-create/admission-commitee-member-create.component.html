@@ -1,0 +1,126 @@
+<div *ngIf='roleMessage == null' class='commitee' [ngStyle]="setMyStyle()">
+
+    <h3 style="text-align:center;color: mediumblue;"> Create Admission Commitee Member</h3>
+    <hr>
+    <form #commiteeForm='ngForm' (submit)='createNew(commiteeForm.value)'>
+        <div class='form-group'>
+            <label for='acmid'>Admission Commitee Member Id</label>
+            <input id='acmid' class='form-control' type='text' ngModel name='admissionCommiteeMemberId' #tid='ngModel' required>
+        </div>
+        <div *ngIf='tid.touched && tid.invalid' class='alert alert-danger'>
+            Please enter admission commitee member id. This field required
+        </div>
+
+        <div class='form-group'>
+            <label for='nm'>Admission Commitee Member Name</label>
+            <input id='nm' class='form-control' type='text' ngModel name='admissionCommiteeMemberName' #tname='ngModel' required>
+        </div>
+        <div *ngIf='tname.touched && tname.invalid'>
+            <div *ngIf='tname.errors.required' class='alert alert-danger'>
+                Please enter name
+            </div>
+
+        </div>
+        <div class='form-group'>
+            <label for='con'>Admission Commitee Member Contact</label>
+            <input id='con' class='form-control' type='text' ngModel name='admissionCommiteeMemberContact' #tcontact='ngModel' required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" title="Please enter valid email">
+        </div>
+
+        <!-- <div *ngIf='tcontact.touched && tcontact.invalid' class='alert alert-danger'>
+            Please enter contact
+        </div>
+        <div *ngIf="tcontact.errors.pattern" class='alert alert-danger'>
+            Please enter valid email
+        </div> -->
+        <div *ngIf='tcontact.touched && tcontact.invalid'>
+            <div *ngIf="tcontact.errors.required" class='alert alert-danger'>
+                Please enter contact
+            </div>
+            <div *ngIf="tcontact.errors.pattern" class='alert alert-danger'>
+                Please enter valid email
+            </div>
+        </div>
+
+
+        <div class='form-group'>
+            <label for='staffid'>Staff Id</label>
+            <input type='text' id='staffid' class='form-control' ngModel name='staffId' #tstaffId='ngModel' required>
+            <!--<select  id='staffid' class="form-control" ngModel name='staffId' #tstaffId='ngModel' required>
+                <option *ngFor="let s of staffs"  [value]="s.staffId" ><i *ngIf="s.role=='COMMITEE'">{{s.staffId}}</i></option>
+            </select>-->
+        </div>
+        <div *ngIf='tstaffId.touched && tstaffId.invalid' class='alert alert-danger'>
+            Please enter staff id. This field is must.
+        </div>
+    
+
+
+
+        <div class='form-group'>
+
+            <label for='staffname'>Username</label>
+            <input type='text' id='staffname' class='form-control' ngModel name='username' #tstaffname='ngModel' required minlength="6">
+
+        </div>
+        <div *ngIf='tstaffname.touched && tstaffname.invalid'>
+            <div *ngIf='tstaffname.errors.required' class='alert alert-danger'>
+                Please enter name
+            </div>
+            <div *ngIf='tstaffname.errors.minlength' class='alert alert-danger'>
+                Name must contains atleast 6 characters
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id='password' class='form-control' ngModel name='password' #tpassword='ngModel' required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
+            />
+        </div>
+       <div *ngIf='tpassword.touched && tpassword.invalid'>
+            <div *ngIf="tpassword.errors.required" class='alert alert-danger'>
+                Password is required
+            </div>
+            <div *ngIf="tpassword.errors.pattern" class='alert alert-danger'>
+                Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters
+            </div>
+        </div>
+
+        <div class='form-group'>
+            <label for='role'>Role</label>
+            <select id='role' class="form-control" ngModel name='role' #tstaffrole='ngModel' required>
+
+                <option value="COMMITEE" selected>
+
+                    COMMITEE
+                </option>
+            </select>
+        </div>
+        <div *ngIf='tstaffrole.touched && tstaffrole.invalid'>
+            <div *ngIf='tstaffrole.errors.required' class='alert alert-danger'>
+                Please enter staff role
+            </div>
+        </div>
+        <button type='submit' class='btn btn-primary btn-block' [disabled]='commiteeForm.invalid'>Submit</button>
+        <button type='reset' class='btn btn-primary btn-block'>Reset Form</button>
+
+    </form>
+
+    <p class='alert alert-success text-center' *ngIf='successMessage != null' (click)='successMessage=null'>
+        {{successMessage}}
+    </p>
+
+    <div *ngIf='errorMessage != null' class='alert alert-danger text-center' (click)='errorMessage=null'>
+        {{errorMessage}}
+    </div>
+
+    <div *ngIf='validationMessages != null' (click)='validationMessages=null'>
+        <p *ngFor='let msg of validationMessages' class='alert alert-danger text-center'>
+            {{msg}}
+        </p>
+    </div>
+</div>
+
+<div *ngIf='roleMessage != null' class='alert alert-danger text-center'>
+    {{roleMessage}}
+</div>

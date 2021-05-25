@@ -1,0 +1,154 @@
+*{
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    text-align: center;
+}
+main{
+    width: 100%; height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+body{
+    background-image: url('https://images.unsplash.com/photo-1510531704581-5b2870972060?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    
+}
+body::after{
+    opacity: 1;
+}
+  
+div.bgclass {
+    background: url('https://images.unsplash.com/20/cambridge.JPG?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=730&q=80') no-repeat;
+    border: 2px solid black;
+    background-size: cover;
+  }
+  
+  div.transbox {
+    margin: 30px;
+    background-color: #ffffff;
+    border: 1px solid black;
+    opacity: 0.7;
+  }
+  
+  div.transbox p {
+    margin: 5%;
+    font-weight: bold;
+    color: #000000;
+  }
+
+h3{
+    border: 2px solid black;
+}
+h5{
+    padding-top: 10px;
+    width: 400px;
+  height: 50px;
+  background-color: red;
+  position: relative;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+.h5class{
+    box-sizing: content-box;
+}
+@keyframes example{
+    0%   {background-color:red;  left:100px;}
+  
+  50%  {background-color:yellow;  left:600px; }
+  
+  100% {background-color:red;  left:100px; }
+    
+}
+@keyframes pulse {
+    0%{background-color:rgb(228, 13, 13);}
+    20%{background-color:rgb(245, 145, 14);}
+    40%{background-color: rgb(11, 184, 103);}
+    60%{background-color:rgb(17, 146, 221);}
+    80%{background-color: rgb(24, 41, 201);}
+    100%{background-color:rgb(204, 18, 157);}
+}
+.row{
+    width:80%; 
+    display: flex;
+    padding: 50px ;
+    margin: auto;
+    border: 3px solid black;
+    background-color: rgba(255,255,255,0.6);
+    
+}
+row::after{
+    opacity:0.3;
+}
+.slider{
+    margin-top: 5px;
+    width:70%;height: 500px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    animation: change 40s infinite linear;
+}
+
+@keyframes change{
+    0%{background-image: url(https://theithacan.org/wp-content/uploads/2014/10/Laptops_CH-1024x576.jpg);}
+    20%{background-image: url(https://dz01iyojmxk8t.cloudfront.net/wp-content/uploads/2019/10/25141900/college-library.jpg);}
+    40%{background-image: url(https://cache.careers360.mobi/media/presets/720X480/colleges/social-media/media-gallery/28997/2020/2/6/Sports%20of%20Shri%20Dharmasthala%20Manjunatheshwara%20University%20Dharwad_Sports.jpg);}
+    60%{background-image: url(https://www.shreesathyam.edu.in/wp-content/uploads/2017/11/1-1-800x430.jpg);}
+    80%{background-image: url(https://cache.careers360.mobi/media/presets/720X480/colleges/social-media/media-gallery/20830/2019/5/30/Auditorium%20of%20NSHM%20College%20of%20Management%20and%20Technology%20Durgapur_Auditorium.jpg);}
+    100%{background-image: url(https://lh3.googleusercontent.com/proxy/pOaYNWI7CgqAlCBjY0WjhjHOATeZ70hh6uKHic8jaznK1Xz7p74BFp-PCW5nfWqHtIuRaX7lFmddFbx0LVTS9qVhhWu8CexSAw);}
+}
+.contact{
+    width: 30%;height:500px;
+    background-size: cover;
+    display:flex; flex-direction: column;
+    
+}
+img{
+    margin-left: 5px;
+}
+.map{
+    background-size: cover;
+    display:flex; flex-direction: column;
+}
+img:hover{
+    
+    transform: scale(1.5);
+}
+footer{
+    text-align: center;
+    padding:3px;
+    background-color: darksalmon;
+    color:white;
+}
+.container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding-top: 50%; /* 8:5 Aspect Ratio */
+  }
+  
+  .responsive-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    
+  }
+  .scroll-to-top {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    opacity: 0;
+    transition: all .2s ease-in-out;
+   }
+   .show-scrollTop {
+    opacity: 1;
+    transition: all .2s ease-in-out;
+   }
